@@ -40,9 +40,19 @@ Open http://localhost:8501.
    ```
 
 2. Go to https://share.streamlit.io → **New app** → pick this repo,
-   branch `main`, main file `app.py` → **Deploy**.
+   branch `main`, main file `app.py`. Under **Advanced settings**, set
+   **Python version** to **3.14** → **Deploy**.
 
 That's it — you'll get a public URL like `https://tableau-sus.streamlit.app`.
+
+### Streamlit version pin (important)
+
+PyGWalker's Streamlit integration hooks into Streamlit's **Tornado** server. Streamlit
+**removed Tornado in 1.57** (it now uses Starlette/Uvicorn), which breaks PyGWalker with
+`ImportError: cannot import name 'make_url_path_regex'`. Until PyGWalker supports the new
+server, `requirements.txt` pins `streamlit>=1.53,<1.57` (1.56.x is the newest Tornado
+release) and adds `tornado` explicitly, since Streamlit no longer pulls it in. Don't bump
+Streamlit past 1.56 without first confirming PyGWalker supports Starlette.
 
 ## Notes
 

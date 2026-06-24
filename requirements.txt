@@ -1,4 +1,11 @@
-streamlit>=1.40
+# pygwalker's Streamlit integration hooks into Streamlit's Tornado server,
+# which Streamlit REMOVED in 1.57 (replaced by Starlette/Uvicorn). Until
+# pygwalker supports the Starlette server, Streamlit must stay on the
+# Tornado-based line (<1.57; 1.56.x is the newest that still ships Tornado).
+streamlit>=1.53,<1.57
+# Tornado is no longer pulled in transitively by Streamlit, but pygwalker
+# still imports it, so require it explicitly.
+tornado>=6.0
 pygwalker>=0.5.0
 pandas>=2.0
 openpyxl>=3.1
