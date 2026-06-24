@@ -1,0 +1,18 @@
+# PyGWalker chart configs (gerados em runtime; efêmeros no Streamlit Cloud)
+gw_specs/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Dados locais — não suba planilhas com dados sensíveis
+*.xlsx
+*.xls
+*.csv
+!sample_data.csv
+
+# Sistema
+.DS_Store
