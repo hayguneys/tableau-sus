@@ -150,15 +150,22 @@ else:
     source_label = uploaded.name
 
 # ---------------------------------------------------------------------------
-# Cabeçalho + resumo do dataset
+# Cabeçalho + tutorial
 # ---------------------------------------------------------------------------
 st.title("Tableau SUS")
 st.caption(f"Fonte: {source_label}")
 
-c1, c2, c3 = st.columns(3)
-c1.metric("Linhas", f"{len(df):,}".replace(",", "."))
-c2.metric("Colunas", f"{df.shape[1]}")
-c3.metric("Motor de cálculo", "DuckDB" if use_duckdb else "pandas")
+st.info(
+    "**Como montar suas visualizações**\n\n"
+    "1. No explorador abaixo, abra a aba **Visualization**.\n"
+    "2. **Arraste** os campos da lista à esquerda para os campos "
+    "**Rows** (linhas), **Columns** (colunas), **Color**, **Size** etc.\n"
+    "3. Troque o tipo de gráfico (barras, linhas, dispersão, mapa…) no seletor "
+    "de **Mark Type** e use **filtros** e **agregações** para refinar.\n"
+    "4. Clique no ícone de **salvar** dentro do explorador para guardar a "
+    "configuração — e baixe-a no fim da página para não perdê-la quando o app reiniciar.",
+    icon="🎯",
+)
 
 with st.expander("Prévia dos dados (10 primeiras linhas)"):
     st.dataframe(df.head(10), use_container_width=True)
